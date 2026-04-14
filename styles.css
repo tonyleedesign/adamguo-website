@@ -296,3 +296,63 @@ button {
   background-color: rgba(255, 255, 255, 0.3);
   flex-shrink: 0;
 }
+
+/* =====================
+   SHARED: SECTION LABEL
+   ===================== */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--color-text-muted);
+}
+
+/* =====================
+   WHAT I OFFER
+   ===================== */
+#what-i-offer {
+  background-color: var(--color-cream);
+  padding: var(--padding-section-y) var(--padding-section-x);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pillars {
+  display: flex;
+  background-color: var(--color-separator);
+  gap: var(--gap-pillars-grid); /* hairline border effect */
+}
+
+.pillar {
+  flex: 1;
+  background-color: var(--color-cream);
+  padding: var(--padding-pillar-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pillar__number {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--color-text-faint);
+}
+
+.pillar__title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--color-dark);
+}
+
+.pillar__body {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
