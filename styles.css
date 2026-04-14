@@ -1,0 +1,89 @@
+/* =====================
+   CSS VARIABLES
+   ===================== */
+:root {
+  /* Colors */
+  --color-cream:          #F7F4EE;
+  --color-warm-gray:      #F2EFE8;
+  --color-dark:           #1A1A18;
+  --color-separator:      #D8D3C8;
+  --color-text-secondary: #6B6560;
+  --color-text-muted:     #9A9488;
+  --color-text-faint:     #C0BAB0;
+  --color-input-bg:       #242420;
+  --color-input-border:   #5A5550;
+  --color-card-border:    #E0DBD2;
+  --color-card-divider:   #E8E3DA;
+  --color-tag-text:       #7A7268;
+
+  /* Buttons */
+  --btn-primary-bg:   var(--color-dark);
+  --btn-primary-text: var(--color-cream);
+  --btn-submit-bg:    var(--color-cream);
+  --btn-submit-text:  var(--color-dark);
+
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  /* Section spacing */
+  --padding-section-x: 120px;
+  --padding-section-y: 72px;
+  --padding-nav-x:     64px;
+  --padding-footer-x:  80px;
+
+  /* Gaps */
+  --gap-hero-content:  20px;
+  --gap-hero-cta:      24px;
+  --gap-nav-links:     32px;
+  --gap-pillars-grid:  1px;
+  --gap-cards-grid:    16px;
+  --gap-contact:       80px;
+  --gap-contact-info:  24px;
+  --gap-form-fields:   20px;
+  --gap-form-name-row: 16px;
+  --gap-social-links:  24px;
+  --gap-ticker:        28px;
+
+  /* Component padding */
+  --padding-pillar-card: 32px;
+  --padding-card-body:   20px;
+  --padding-btn-primary: 13px 28px;
+  --padding-btn-submit:  14px 28px;
+  --padding-input:       10px 12px;
+  --padding-chip:        3px 8px;
+}
+
+/* =====================
+   BASE RESET
+   ===================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
