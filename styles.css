@@ -356,3 +356,84 @@ button {
   line-height: 1.7;
   color: var(--color-text-muted);
 }
+
+/* =====================
+   FEATURED PERFORMANCES
+   ===================== */
+#performances {
+  background-color: var(--color-warm-gray);
+  padding: var(--padding-section-y) var(--padding-section-x);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.performances__heading {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--color-dark);
+}
+
+.cards {
+  display: flex;
+  gap: var(--gap-cards-grid);
+}
+
+.card {
+  flex: 1;
+  border: 1px solid var(--color-card-border);
+  background-color: var(--color-cream);
+  display: flex;
+  flex-direction: column;
+}
+
+.card__image {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card__divider {
+  border: none;
+  border-top: 1px solid var(--color-card-divider);
+}
+
+.card__body {
+  padding: var(--padding-card-body);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card__platform {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--color-dark);
+}
+
+.card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--color-tag-text);
+  border: 1px solid var(--color-card-border);
+  padding: var(--padding-chip);
+}
+
+.card__status {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: var(--color-text-muted);
+}
