@@ -161,25 +161,25 @@ button {
 .hero__gradient--top {
   top: 0; left: 0; right: 0;
   height: 300px;
-  background: linear-gradient(to bottom, #F7F4EE 0%, #F7F4EECC 20%, #F7F4EE88 50%, #F7F4EE11 80%, #F7F4EE00 100%);
+  background: linear-gradient(to bottom, #F7F4EE 0%, #F7F4EECC 20%, #F7F4EE88 50%, #F7F4EE11 80%, #F7F4EE00 100%); /* cream (#F7F4EE) with alpha stops — CSS vars can't be used in hex-alpha notation */
 }
 
 .hero__gradient--bottom {
   bottom: 0; left: 0; right: 0;
   height: 300px;
-  background: linear-gradient(to top, #F7F4EE 0%, #F7F4EECC 20%, #F7F4EE80 50%, #F7F4EE00 100%);
+  background: linear-gradient(to top, #F7F4EE 0%, #F7F4EECC 20%, #F7F4EE80 50%, #F7F4EE00 100%); /* cream (#F7F4EE) with alpha stops — CSS vars can't be used in hex-alpha notation */
 }
 
 .hero__gradient--right {
   top: 0; right: 0; bottom: 0;
   width: 400px;
-  background: linear-gradient(to left, #F7F4EE 0%, #F7F4EEB3 30%, #F7F4EE80 60%, #F7F4EE00 100%);
+  background: linear-gradient(to left, #F7F4EE 0%, #F7F4EEB3 30%, #F7F4EE80 60%, #F7F4EE00 100%); /* cream (#F7F4EE) with alpha stops — CSS vars can't be used in hex-alpha notation */
 }
 
 .hero__gradient--left {
   top: 0; left: 0; bottom: 0;
   width: 400px;
-  background: linear-gradient(to right, #F7F4EE 0%, #F7F4EEB3 30%, #F7F4EE80 60%, #F7F4EE00 100%);
+  background: linear-gradient(to right, #F7F4EE 0%, #F7F4EEB3 30%, #F7F4EE80 60%, #F7F4EE00 100%); /* cream (#F7F4EE) with alpha stops — CSS vars can't be used in hex-alpha notation */
 }
 
 .hero__content {
