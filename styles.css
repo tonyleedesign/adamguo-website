@@ -611,3 +611,122 @@ button {
   letter-spacing: 1px;
   color: #4A4540; /* intentional one-off from design — not a token */
 }
+
+/* =====================
+   RESPONSIVE — ≤ 768px
+   ===================== */
+@media (max-width: 768px) {
+
+  /* Nav */
+  .nav {
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    height: auto;
+    padding: 16px;
+    position: relative;
+  }
+
+  .nav__logo {
+    font-size: 11px;
+  }
+
+  .nav__links {
+    gap: 20px;
+  }
+
+  /* Hero */
+  #hero {
+    height: auto;
+    padding-bottom: 48px;
+  }
+
+  .hero__portrait,
+  .hero__gradient {
+    display: none;
+  }
+
+  .hero__content {
+    padding: 24px 24px 0;
+  }
+
+  .hero__heading {
+    font-size: 48px;
+  }
+
+  /* Ticker — seamless CSS marquee */
+  #ticker {
+    height: 52px;
+  }
+
+  .ticker__track {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    width: max-content;
+    animation: ticker-scroll 20s linear infinite;
+  }
+
+  .ticker__item {
+    padding: 0 var(--gap-ticker);
+  }
+
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* What I Offer */
+  #what-i-offer {
+    padding: 48px 24px;
+  }
+
+  .pillars {
+    flex-direction: column;
+    background-color: transparent;
+    gap: 0;
+  }
+
+  .pillar {
+    border-bottom: 1px solid var(--color-separator);
+  }
+
+  .pillar:last-child {
+    border-bottom: none;
+  }
+
+  /* Performances */
+  #performances {
+    padding: 48px 24px;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  /* Contact */
+  #contact {
+    flex-direction: column;
+    padding: 48px 24px;
+    gap: 40px;
+  }
+
+  .contact__info {
+    width: 100%;
+  }
+
+  .contact__detail {
+    font-size: 18px;
+  }
+
+  /* Footer */
+  #footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    height: auto;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+}
