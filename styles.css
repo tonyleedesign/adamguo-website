@@ -37,7 +37,7 @@
   --gap-hero-content:  20px;
   --gap-hero-cta:      24px;
   --gap-nav-links:     32px;
-  --gap-pillars-grid:  1px;
+  --gap-pillars-grid:  1px; /* hairline border effect between pillar cards */
   --gap-cards-grid:    16px;
   --gap-contact:       80px;
   --gap-contact-info:  24px;
@@ -74,12 +74,17 @@ body {
   color: var(--color-dark);
   max-width: 1440px;
   margin: 0 auto;
-  overflow-x: hidden;
+  line-height: 1.5;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 button {
