@@ -437,3 +437,149 @@ button {
   letter-spacing: 1.5px;
   color: var(--color-text-muted);
 }
+
+/* =====================
+   CONTACT
+   ===================== */
+#contact {
+  background-color: var(--color-dark);
+  padding: 88px var(--padding-section-x);
+  display: flex;
+  gap: var(--gap-contact);
+  align-items: flex-start;
+}
+
+.contact__info {
+  width: 480px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-contact-info);
+}
+
+.contact__label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #ffffff;
+}
+
+.contact__heading {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 300;
+  line-height: 1.05;
+  color: #E0DBD0; /* intentional one-off from design — not a token */
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact__detail {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--color-text-faint);
+}
+
+.contact__body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-tag-text);
+  max-width: 400px;
+}
+
+.contact__socials {
+  display: flex;
+  gap: var(--gap-social-links);
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-tag-text);
+}
+
+.social-link i {
+  width: 14px;
+  height: 14px;
+  color: var(--color-tag-text);
+}
+
+.social-link span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Form */
+.contact__form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-form-fields);
+}
+
+.form__name-row {
+  display: flex;
+  gap: var(--gap-form-name-row);
+}
+
+.form__name-row .form__field {
+  flex: 1;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form__field label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-faint);
+}
+
+.form__field input,
+.form__field textarea {
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  border-radius: 6px;
+  padding: var(--padding-input);
+  color: var(--color-text-faint);
+  font-family: var(--font-body);
+  font-size: 13px;
+  width: 100%;
+  outline: none;
+}
+
+.form__field input::placeholder,
+.form__field textarea::placeholder {
+  color: var(--color-input-border);
+}
+
+.form__field textarea {
+  height: 120px;
+  resize: vertical;
+  padding: 8px 12px;
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: var(--btn-submit-bg);
+  color: var(--btn-submit-text);
+  padding: var(--padding-btn-submit);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}

@@ -162,8 +162,62 @@
 </section>
 
   <section id="contact" aria-label="Contact">
-    <!-- contact info + form -->
-  </section>
+
+  <div class="contact__info">
+    <p class="contact__label">GET IN TOUCH</p>
+    <h2 class="contact__heading">Contact:</h2>
+    <div class="contact__details">
+      <p class="contact__detail">adamguo09@gmail.com</p>
+      <p class="contact__detail">917-213-8717</p>
+    </div>
+    <p class="contact__body">For any inquiries please contact me by phone and email and I will get back to you as soon as I can!</p>
+    <div class="contact__socials">
+      <!-- TODO: replace href with Adam's actual Instagram URL -->
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="social-link">
+        <i data-lucide="instagram"></i>
+        <span>Instagram</span>
+      </a>
+      <a href="https://open.spotify.com/artist/51akc10V0N4dEo8GUC8am7" target="_blank" rel="noopener noreferrer" class="social-link">
+        <i data-lucide="music"></i>
+        <span>Spotify</span>
+      </a>
+      <!-- TODO: replace href with Adam's actual YouTube channel URL -->
+      <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="social-link">
+        <i data-lucide="youtube"></i>
+        <span>YouTube</span>
+      </a>
+    </div>
+  </div>
+
+  <form class="contact__form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+    <input type="hidden" name="subject" value="New message from Adam Guo portfolio">
+    <div class="form__name-row">
+      <div class="form__field">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first_name" placeholder="Adam" required>
+      </div>
+      <div class="form__field">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last_name" placeholder="Guo" required>
+      </div>
+    </div>
+    <div class="form__field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com" required>
+    </div>
+    <div class="form__field">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject_line" placeholder="Concert booking inquiry">
+    </div>
+    <div class="form__field">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Tell me about your event or project..." required></textarea>
+    </div>
+    <button type="submit" class="btn-submit">SEND MESSAGE</button>
+  </form>
+
+</section>
 
   <footer id="footer">
     <!-- footer -->
