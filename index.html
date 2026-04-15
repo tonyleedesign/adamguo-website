@@ -186,32 +186,35 @@
     </div>
   </div>
 
-  <form class="contact__form" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
-    <input type="hidden" name="subject" value="New message from Adam Guo portfolio">
+  <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="cc17aae6-289a-44ec-a18c-540968b14326">
+    <input type="hidden" name="subject" value="New message from Adam Guo">
+    <input type="hidden" name="from_name" value="Adam Guo">
+    <input type="checkbox" name="botcheck" class="form__botcheck" tabindex="-1" autocomplete="off">
     <div class="form__name-row">
       <div class="form__field">
         <label for="first-name">First Name</label>
-        <input type="text" id="first-name" name="first_name" placeholder="Adam" required>
+        <input type="text" id="first-name" name="First Name" placeholder="Adam" autocomplete="given-name" required>
       </div>
       <div class="form__field">
         <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" name="last_name" placeholder="Guo" required>
+        <input type="text" id="last-name" name="Last Name" placeholder="Guo" autocomplete="family-name" required>
       </div>
     </div>
     <div class="form__field">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
     </div>
     <div class="form__field">
-      <label for="subject">Subject</label>
-      <input type="text" id="subject" name="subject_line" placeholder="Concert booking inquiry">
+      <label for="inquiry-subject">Subject</label>
+      <input type="text" id="inquiry-subject" name="Inquiry Subject" placeholder="Concert booking inquiry">
     </div>
     <div class="form__field">
       <label for="message">Message</label>
       <textarea id="message" name="message" placeholder="Tell me about your event or project..." required></textarea>
     </div>
     <button type="submit" class="btn-submit">SEND MESSAGE</button>
+    <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
   </form>
 
 </section>
@@ -222,6 +225,60 @@
 </footer>
 
   <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js"></script>
-  <script>lucide.createIcons();</script>
+  <script>
+    lucide.createIcons();
+
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    contactForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const formData = new FormData(contactForm);
+      const accessKey = formData.get('access_key');
+      const fullName = [formData.get('First Name'), formData.get('Last Name')]
+        .filter(Boolean)
+        .join(' ');
+      formData.set('name', fullName);
+
+      if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+        formStatus.textContent = 'Please add the Web3Forms access key before sending.';
+        formStatus.dataset.state = 'error';
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'SENDING...';
+      formStatus.textContent = 'Sending your message...';
+      formStatus.dataset.state = 'pending';
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json'
+          },
+          body: formData
+        });
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          contactForm.reset();
+          formStatus.textContent = 'Message sent. Thank you.';
+          formStatus.dataset.state = 'success';
+        } else {
+          formStatus.textContent = result.message || 'The message could not be sent. Please try again.';
+          formStatus.dataset.state = 'error';
+        }
+      } catch (error) {
+        formStatus.textContent = 'The message could not be sent. Please try again.';
+        formStatus.dataset.state = 'error';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'SEND MESSAGE';
+      }
+    });
+  </script>
 </body>
 </html>
