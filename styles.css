@@ -28,10 +28,16 @@
   --font-mono:    'DM Mono', monospace;
 
   /* Section spacing */
-  --padding-section-x: 120px;
+  --padding-section-x: 64px;
   --padding-section-y: 72px;
   --padding-nav-x:     64px;
-  --padding-footer-x:  80px;
+
+  /* Content centering — keeps content ≤ 1440px wide on any viewport
+     while backgrounds always stretch full width.
+     half-offset = (1440px / 2) - padding-section-x = 656px
+     Usage: padding-left/right: max(var(--padding-section-x), calc(50% - var(--half-offset))) */
+  --content-max:  1440px;
+  --half-offset:  calc(var(--content-max) / 2 - var(--padding-section-x));
 
   /* Gaps */
   --gap-hero-content:  20px;
@@ -72,8 +78,6 @@ body {
   font-family: var(--font-body);
   background-color: var(--color-cream);
   color: var(--color-dark);
-  max-width: 1440px;
-  margin: 0 auto;
   line-height: 1.5;
 }
 
@@ -106,6 +110,7 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--padding-nav-x);
+  background-color: var(--color-cream);
   z-index: 10;
 }
 
@@ -135,60 +140,48 @@ button {
    ===================== */
 #hero {
   position: relative;
+  display: flex;
   height: 720px;
   overflow: hidden;
   background-color: var(--color-cream);
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
-.hero__portrait {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 741px;
-  height: 720px;
-  background-image: url('images/portrait.png');
-  background-size: cover;
-  background-position: center top;
-  z-index: 0;
-}
-
-.hero__gradient {
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero__gradient--top {
-  top: 0; left: 0; right: 0;
-  height: 300px;
-  background: linear-gradient(to bottom, #F7F4EE 0%, #F7F4EECC 20%, #F7F4EE88 50%, #F7F4EE11 80%, #F7F4EE00 100%); /* cream (#F7F4EE) with alpha stops — CSS vars can't be used in hex-alpha notation */
-}
-
-.hero__gradient--bottom {
-  bottom: 0; left: 0; right: 0;
-  height: 300px;
-  background: linear-gradient(to top, #F7F4EE 0%, #F7F4EECC 20%, #F7F4EE80 50%, #F7F4EE00 100%); /* cream (#F7F4EE) with alpha stops — CSS vars can't be used in hex-alpha notation */
-}
-
-.hero__gradient--right {
-  top: 0; right: 0; bottom: 0;
-  width: 400px;
-  background: linear-gradient(to left, #F7F4EE 0%, #F7F4EEB3 30%, #F7F4EE80 60%, #F7F4EE00 100%); /* cream (#F7F4EE) with alpha stops — CSS vars can't be used in hex-alpha notation */
-}
-
-.hero__gradient--left {
-  top: 0; left: 0; bottom: 0;
-  width: 400px;
-  background: linear-gradient(to right, #F7F4EE 0%, #F7F4EEB3 30%, #F7F4EE80 60%, #F7F4EE00 100%); /* cream (#F7F4EE) with alpha stops — CSS vars can't be used in hex-alpha notation */
-}
-
-.hero__content {
-  position: relative;
-  z-index: 2;
-  padding: 160px var(--padding-section-x) 0;
+/* Left column — text content */
+.hero__left {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--padding-section-x);
   gap: var(--gap-hero-content);
+  background-color: var(--color-cream); /* solid background so portrait gradient doesn't bleed through */
+  position: relative;
+  z-index: 1;
+}
+
+/* Right column — portrait photo with gradient vignettes
+   flex: 1 gives it exactly half the hero width.
+   background-size: cover fills that fixed area — Adam always stays in frame. */
+.hero__right {
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--color-cream);
+  background-image:
+    /* left vignette — fades portrait into the content column (dominant, 91%) */
+    linear-gradient(to right,  #F7F4EE 0%, #F7F4EECC 8%,  #F7F4EE80 15%, #F7F4EE00 91%),
+    /* top vignette */
+    linear-gradient(to bottom, #F7F4EE 0%, #F7F4EEB3 8%,  #F7F4EE80 15%, #F7F4EE00 30%),
+    /* bottom vignette */
+    linear-gradient(to top,    #F7F4EE 0%, #F7F4EEB3 10%, #F7F4EE80 20%, #F7F4EE00 35%),
+    /* right vignette */
+    linear-gradient(to left,   #F7F4EE 0%, #F7F4EECC 8%,  #F7F4EE88 15%, #F7F4EE44 25%, #F7F4EE11 35%, #F7F4EE00 50%),
+    /* portrait photo */
+    url('images/portrait.png');
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, cover;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 .hero__eyebrow {
@@ -246,6 +239,29 @@ button {
   font-weight: 300;
   letter-spacing: 0.5px;
   color: #4b4b4b; /* intentional one-off from design — not a token */
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.hero__spotify-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.hero__spotify-link:hover {
+  color: var(--color-dark);
+}
+
+.hero__spotify-link:hover::after {
+  transform: scaleX(1);
 }
 
 /* =====================
@@ -262,14 +278,15 @@ button {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 0 var(--padding-nav-x);
+  padding: 0 max(var(--padding-nav-x), calc(50% - var(--half-offset)));
   gap: var(--gap-ticker);
 }
 
 .ticker__item {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -297,6 +314,10 @@ button {
   flex-shrink: 0;
 }
 
+.ticker__set-2 {
+  display: none;
+}
+
 /* =====================
    SHARED: SECTION LABEL
    ===================== */
@@ -313,7 +334,7 @@ button {
    ===================== */
 #what-i-offer {
   background-color: var(--color-cream);
-  padding: var(--padding-section-y) var(--padding-section-x);
+  padding: var(--padding-section-y) max(var(--padding-section-x), calc(50% - var(--half-offset)));
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -333,6 +354,9 @@ button {
   flex-direction: column;
   gap: 12px;
 }
+
+.pillar:first-child { padding-left: 0; }
+.pillar:last-child  { padding-right: 0; }
 
 .pillar__number {
   font-family: var(--font-mono);
@@ -362,7 +386,7 @@ button {
    ===================== */
 #performances {
   background-color: var(--color-warm-gray);
-  padding: var(--padding-section-y) var(--padding-section-x);
+  padding: var(--padding-section-y) max(var(--padding-section-x), calc(50% - var(--half-offset)));
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -386,6 +410,14 @@ button {
   background-color: var(--color-cream);
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .card__image {
@@ -411,7 +443,20 @@ button {
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 300;
   color: var(--color-dark);
+  line-height: 1.3;
+}
+
+.card:hover .card__title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .card__chips {
@@ -443,7 +488,7 @@ button {
    ===================== */
 #contact {
   background-color: var(--color-dark);
-  padding: 88px var(--padding-section-x);
+  padding: 88px max(var(--padding-section-x), calc(50% - var(--half-offset)));
   display: flex;
   gap: var(--gap-contact);
   align-items: flex-start;
@@ -504,9 +549,28 @@ button {
   align-items: center;
   gap: 6px;
   color: var(--color-tag-text);
+  position: relative;
 }
 
-.social-link i {
+.social-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.social-link:hover::after {
+  transform: scaleX(1);
+}
+
+.social-link i,
+.social-link svg {
   width: 14px;
   height: 14px;
   color: var(--color-tag-text);
@@ -593,7 +657,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--padding-footer-x);
+  padding: 0 max(var(--padding-nav-x), calc(50% - var(--half-offset)));
 }
 
 .footer__logo {
@@ -613,7 +677,68 @@ button {
 }
 
 /* =====================
-   RESPONSIVE — ≤ 768px
+   RESPONSIVE — ≤ 1024px (tablet + mobile)
+   ===================== */
+@media (max-width: 1024px) {
+
+  /* Hide portrait — hero__left fills full width naturally */
+  .hero__right {
+    display: none;
+  }
+
+  /* Ticker — seamless CSS marquee */
+  .ticker__set-2 {
+    display: contents; /* invisible wrapper — children join the flex track directly */
+  }
+
+  .ticker__track {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    width: max-content;
+    animation: ticker-scroll 20s linear infinite;
+  }
+
+  .ticker__item {
+    padding: 0 var(--gap-ticker);
+  }
+
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Contact — stack and fill on tablet */
+  #contact {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 48px 24px;
+    gap: 40px;
+  }
+
+  .contact__info {
+    width: 100%;
+  }
+
+  .contact__form {
+    width: 100%;
+  }
+
+  /* Footer — stack on tablet */
+  #footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: auto;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+}
+
+/* =====================
+   RESPONSIVE — ≤ 768px (mobile only)
    ===================== */
 @media (max-width: 768px) {
 
@@ -635,45 +760,20 @@ button {
     gap: 20px;
   }
 
-  /* Hero */
+  /* Hero — stack vertically, left column goes full width */
   #hero {
+    flex-direction: column;
     height: auto;
     padding-bottom: 48px;
   }
 
-  .hero__portrait,
-  .hero__gradient {
-    display: none;
-  }
-
-  .hero__content {
-    padding: 24px 24px 0;
+  .hero__left {
+    padding: 80px 24px 0;
+    justify-content: flex-start;
   }
 
   .hero__heading {
     font-size: 48px;
-  }
-
-  /* Ticker — seamless CSS marquee */
-  #ticker {
-    height: 52px;
-  }
-
-  .ticker__track {
-    display: flex;
-    justify-content: flex-start;
-    padding: 0;
-    width: max-content;
-    animation: ticker-scroll 20s linear infinite;
-  }
-
-  .ticker__item {
-    padding: 0 var(--gap-ticker);
-  }
-
-  @keyframes ticker-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
   }
 
   /* What I Offer */
@@ -691,9 +791,8 @@ button {
     border-bottom: 1px solid var(--color-separator);
   }
 
-  .pillar:last-child {
-    border-bottom: none;
-  }
+  .pillar:first-child { padding-left: var(--padding-pillar-card); }
+  .pillar:last-child  { padding-right: var(--padding-pillar-card); border-bottom: none; }
 
   /* Performances */
   #performances {
@@ -705,28 +804,8 @@ button {
   }
 
   /* Contact */
-  #contact {
-    flex-direction: column;
-    padding: 48px 24px;
-    gap: 40px;
-  }
-
-  .contact__info {
-    width: 100%;
-  }
-
   .contact__detail {
     font-size: 18px;
-  }
-
-  /* Footer */
-  #footer {
-    flex-direction: column;
-    justify-content: center;
-    gap: 8px;
-    height: auto;
-    padding: 20px 16px;
-    text-align: center;
   }
 
 }

@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <meta name="description" content="Adam Guo — Violinist, Pianist, and Voice Teacher based in New York.">
-  <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js" defer></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,14 +22,8 @@
       </nav>
     </header>
 
-    <div class="hero__portrait" aria-hidden="true"></div>
-    <div class="hero__gradient hero__gradient--top" aria-hidden="true"></div>
-    <div class="hero__gradient hero__gradient--right" aria-hidden="true"></div>
-    <div class="hero__gradient hero__gradient--bottom" aria-hidden="true"></div>
-    <div class="hero__gradient hero__gradient--left" aria-hidden="true"></div>
-
-    <div class="hero__content">
-      <p class="hero__eyebrow">SOLOIST — CHAMBER MUSICIAN — RECORDING ARTIST</p>
+    <div class="hero__left">
+      <p class="hero__eyebrow">VIOLINIST — MUSICIAN — RECORDING ARTIST</p>
       <h1 class="hero__heading">Hi, I'm Adam Guo</h1>
       <div class="hero__body">
         <p>I have been teaching violin and piano for over six years, bringing both technical expertise and genuine passion to his instruction.</p>
@@ -41,6 +34,7 @@
         <a href="https://open.spotify.com/artist/51akc10V0N4dEo8GUC8am7" target="_blank" rel="noopener noreferrer" class="hero__spotify-link">Listen on Spotify →</a>
       </div>
     </div>
+    <div class="hero__right" aria-hidden="true"></div>
   </section>
 
   <div id="ticker" aria-hidden="true">
@@ -67,28 +61,30 @@
     <div class="ticker__item">
       <span class="ticker__primary">MUSICIAN</span>
     </div>
-    <!-- Set 2 (duplicate for seamless mobile scroll loop) -->
-    <div class="ticker__divider"></div>
-    <div class="ticker__item">
-      <span class="ticker__primary">NEW SCHOOL</span>
-      <span class="ticker__secondary">ALUMNI '25</span>
-    </div>
-    <div class="ticker__divider"></div>
-    <div class="ticker__item">
-      <span class="ticker__primary">EAST BRUNSWICK SYMPHONY ORCHESTRA</span>
-      <span class="ticker__secondary">VIOLINIST</span>
-    </div>
-    <div class="ticker__divider"></div>
-    <div class="ticker__item">
-      <span class="ticker__primary">STUDIO OF MICHELLE KIM</span>
-    </div>
-    <div class="ticker__divider"></div>
-    <div class="ticker__item">
-      <span class="ticker__primary">B.M.M.M</span>
-    </div>
-    <div class="ticker__divider"></div>
-    <div class="ticker__item">
-      <span class="ticker__primary">MUSICIAN</span>
+    <!-- Set 2 (duplicate for seamless mobile scroll loop — hidden on desktop) -->
+    <div class="ticker__set-2">
+      <div class="ticker__divider"></div>
+      <div class="ticker__item">
+        <span class="ticker__primary">NEW SCHOOL</span>
+        <span class="ticker__secondary">ALUMNI '25</span>
+      </div>
+      <div class="ticker__divider"></div>
+      <div class="ticker__item">
+        <span class="ticker__primary">EAST BRUNSWICK SYMPHONY ORCHESTRA</span>
+        <span class="ticker__secondary">VIOLINIST</span>
+      </div>
+      <div class="ticker__divider"></div>
+      <div class="ticker__item">
+        <span class="ticker__primary">STUDIO OF MICHELLE KIM</span>
+      </div>
+      <div class="ticker__divider"></div>
+      <div class="ticker__item">
+        <span class="ticker__primary">B.M.M.M</span>
+      </div>
+      <div class="ticker__divider"></div>
+      <div class="ticker__item">
+        <span class="ticker__primary">MUSICIAN</span>
+      </div>
     </div>
   </div>
 </div>
@@ -118,45 +114,46 @@
   <h2 class="performances__heading">Featured Performances</h2>
   <div class="cards">
 
-    <div class="card">
-      <div class="card__image" style="background-image: url('https://img.youtube.com/vi/HU9k3WdWd6I/maxresdefault.jpg')" role="img" aria-label="Performance video thumbnail"></div>
+    <a class="card" href="https://www.youtube.com/watch?v=HU9k3WdWd6I" target="_blank" rel="noopener noreferrer" aria-label="Watch yung kai - blue (cover w/ violin) on YouTube">
+      <div class="card__image" style="background-image: url('https://img.youtube.com/vi/HU9k3WdWd6I/maxresdefault.jpg')" role="img" aria-label="Video thumbnail"></div>
       <hr class="card__divider">
       <div class="card__body">
-        <p class="card__platform">YouTube</p>
+        <p class="card__platform">youtube</p>
+        <p class="card__title">yung kai — blue (cover w/ violin)</p>
         <div class="card__chips">
-          <span class="chip">Solo Recital</span>
-          <span class="chip">Baroque</span>
+          <span class="chip">Cover</span>
+          <span class="chip">Solo</span>
+          <span class="chip">Violin</span>
         </div>
-        <p class="card__status">YOUTUBE</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card">
-      <div class="card__image" style="background-image: url('https://img.youtube.com/vi/IN5kOooVeF8/maxresdefault.jpg')" role="img" aria-label="Performance video thumbnail"></div>
+    <a class="card" href="https://www.youtube.com/watch?v=IN5kOooVeF8" target="_blank" rel="noopener noreferrer" aria-label="Watch Shinunoga E-Wa — Fuiji Kaze on YouTube">
+      <div class="card__image" style="background-image: url('https://img.youtube.com/vi/IN5kOooVeF8/maxresdefault.jpg')" role="img" aria-label="Video thumbnail"></div>
       <hr class="card__divider">
       <div class="card__body">
-        <p class="card__platform">YouTube</p>
+        <p class="card__platform">youtube</p>
+        <p class="card__title">Shinunoga E-Wa — Fuiji Kaze</p>
         <div class="card__chips">
-          <span class="chip">Concerto</span>
-          <span class="chip">Romantic</span>
-          <span class="chip">Orchestral</span>
+          <span class="chip">Cover</span>
+          <span class="chip">J-Pop</span>
+          <span class="chip">Violin</span>
         </div>
-        <p class="card__status">YOUTUBE</p>
       </div>
-    </div>
+    </a>
 
-    <div class="card">
+    <a class="card" href="https://open.spotify.com/artist/51akc10V0N4dEo8GUC8am7" target="_blank" rel="noopener noreferrer" aria-label="Listen to adamviolin on Spotify">
       <div class="card__image" style="background-image: url('https://i.scdn.co/image/ab67616d00001e02ea57896b4f072641ad3fccf7')" role="img" aria-label="Spotify artist photo"></div>
       <hr class="card__divider">
       <div class="card__body">
-        <p class="card__platform">Spotify</p>
+        <p class="card__platform">spotify</p>
+        <p class="card__title">adamviolin</p>
         <div class="card__chips">
-          <span class="chip">Chamber Music</span>
-          <span class="chip">Impressionist</span>
+          <span class="chip">Check It Out</span>
+          <span class="chip">My Music</span>
         </div>
-        <p class="card__status">SPOTIFY</p>
       </div>
-    </div>
+    </a>
 
   </div>
 </section>
@@ -178,7 +175,7 @@
         <span>Instagram</span>
       </a>
       <a href="https://open.spotify.com/artist/51akc10V0N4dEo8GUC8am7" target="_blank" rel="noopener noreferrer" class="social-link">
-        <i data-lucide="music"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
         <span>Spotify</span>
       </a>
       <!-- TODO: replace href with Adam's actual YouTube channel URL -->
@@ -224,6 +221,7 @@
   <span class="footer__copy">© 2026 Adam Guo. All rights reserved.</span>
 </footer>
 
+  <script src="https://unpkg.com/lucide@0.511.0/dist/umd/lucide.min.js"></script>
   <script>lucide.createIcons();</script>
 </body>
 </html>
