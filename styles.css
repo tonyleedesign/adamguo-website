@@ -708,11 +708,12 @@ button {
     to   { transform: translateX(-50%); }
   }
 
-  /* Contact — stack and fill on tablet */
+  /* Contact — stack and fill on tablet, keep desktop horizontal padding */
   #contact {
     flex-direction: column;
     align-items: stretch;
-    padding: 48px 24px;
+    padding-top: 48px;
+    padding-bottom: 48px;
     gap: 40px;
   }
 
@@ -724,15 +725,11 @@ button {
     width: 100%;
   }
 
-  /* Footer — stack on tablet */
+  /* Footer — keep side by side on tablet, just adjust height */
   #footer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
     height: auto;
-    padding: 20px 16px;
-    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
 }
@@ -804,8 +801,17 @@ button {
   }
 
   /* Contact */
+  #contact {
+    padding: 48px 24px;
+  }
+
   .contact__detail {
     font-size: 18px;
+  }
+
+  /* Footer — switch to mobile padding */
+  #footer {
+    padding: 32px 24px;
   }
 
 }
